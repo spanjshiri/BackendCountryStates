@@ -24,9 +24,9 @@ class StatesOfCountryList(APIView):
 
     def post(self, request, format=None, **kwargs):
         country = kwargs['country_code']
-        democracy_data = request.data
-        democracy_data['country_code'] = country
-        serializer = StateCreateSerializer(data=democracy_data)
+        state_data = request.data
+        state_data['country_code'] = country
+        serializer = StateCreateSerializer(data=state_data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
